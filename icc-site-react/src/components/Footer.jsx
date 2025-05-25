@@ -69,7 +69,7 @@ export const Footer = () => {
 
           {/* Copyright */}
           <p className="text-[#a7a1b5] text-base font-normal leading-normal">
-            © 2024 PixelPlay. All rights reserved.
+            © 2025 Team ICC. All rights reserved.
           </p>
         </footer>
       </div>

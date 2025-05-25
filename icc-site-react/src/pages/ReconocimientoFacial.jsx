@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
+import FormularioUsuario from '../components/FormularioUsuario';
 
 const ReconocimientoFacial = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [image, setImage] = useState(null);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false); // NUEVO
 
-  // Solicitar acceso a la webcam al cargar la página
   useEffect(() => {
     const startWebcam = async () => {
       try {
@@ -21,34 +22,38 @@ const ReconocimientoFacial = () => {
     };
 
     startWebcam();
-  }, []); // Se ejecuta solo una vez al cargar el componente
+  }, []);
 
-  // Tomar una foto desde la webcam
   const takePhoto = () => {
     if (videoRef.current && canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
       context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
       const dataUrl = canvas.toDataURL("image/png");
-      setImage(dataUrl); // Guardar la imagen tomada
+      setImage(dataUrl);
+      setMostrarFormulario(true); // MOSTRAR FORMULARIO AL TOMAR FOTO
     }
   };
 
-  // Manejar la subida de una imagen
   const handleUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setImage(e.target.result); // Guardar la imagen subida
+        setImage(e.target.result);
+        setMostrarFormulario(true); // TAMBIÉN MUESTRA FORMULARIO AL SUBIR IMAGEN
       };
       reader.readAsDataURL(file);
     }
   };
 
+  const cerrarFormulario = () => {
+    setMostrarFormulario(false);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen bg-blue-950">
-      {/* Cuadrado con la webcam */}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-950 relative">
+      <h1 className="text-3xl font-bold text-white mt-4 mb-4">Reconocimiento Facial</h1>
       <div
         className="relative flex items-center justify-center"
         style={{
@@ -73,7 +78,6 @@ const ReconocimientoFacial = () => {
         ></canvas>
       </div>
 
-      {/* Botones */}
       <div className="mt-6 flex gap-6 items-center space-y-4">
         <button
           onClick={takePhoto}
@@ -96,7 +100,6 @@ const ReconocimientoFacial = () => {
         />
       </div>
 
-      {/* Mostrar la imagen tomada o subida */}
       {image && (
         <div className="mt-6">
           <img
@@ -106,6 +109,9 @@ const ReconocimientoFacial = () => {
           />
         </div>
       )}
+
+      {/* FORMULARIO */}
+      <FormularioUsuario visible={mostrarFormulario} onClose={cerrarFormulario} />
     </div>
   );
 };

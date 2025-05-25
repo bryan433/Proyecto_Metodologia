@@ -32,11 +32,11 @@ export const SomeThing = () => {
       <div className="flex flex-col justify-end gap-6 px-4 py-10 max-w-[960px] mx-auto border-2 border-[#201d25] bg-[#201d25] rounded-xl shadow-[0_0_4px_rgba(0,0,0,0.1)]">
         <div className="flex flex-col items-center justify-center gap-2 text-center">
           <h1 className="text-white text-center tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
-            Join the PixelPlay Community
+            Join the Team ICC Community
           </h1>
           <p className="text-white text-base font-normal leading-normal max-w-[720px]">
             Stay updated on our latest game releases, news, and events. Follow
-            us on social media and be part of the PixelPlay community!
+            us on social media and be part of the Team ICC community!
           </p>
         </div>
         <div className="flex flex-1 justify-center">

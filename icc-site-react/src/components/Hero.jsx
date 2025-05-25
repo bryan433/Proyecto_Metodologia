@@ -19,9 +19,9 @@ export const Hero2 = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40 z-10"></div>
 
       <div className="relative z-20 text-center text-white p-4 flex flex-col gap-4">
-        <h1 className="text-4xl font-black">Welcome to PixelPlay</h1>
+        <h1 className="text-4xl font-black">Welcome to Team ICC</h1>
         <h2 className="text-sm font-normal">
-          Dive into the world of PixelPlay, where Computer Engineering...
+          Immerse yourself in the world of Team ICC, where Computer Engineering...
         </h2>
         <a href="#games" className="capitalize hover:bg-gray-200 cursor-pointer transition rounded-full bg-[#bfadea] text-[#131217] px-5 py-2 font-bold cursor">
           discover our games

@@ -19,7 +19,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           <LogoUtalca />
           <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">
-            PixelPlay
+            Team ICC
           </h2>
         </div>
 
