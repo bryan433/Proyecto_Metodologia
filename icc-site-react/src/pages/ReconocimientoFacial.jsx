@@ -9,7 +9,9 @@ const ReconocimientoFacial = () => {
   useEffect(() => {
     const startWebcam = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -45,9 +47,7 @@ const ReconocimientoFacial = () => {
   };
 
   return (
-    <div
-      className="flex flex-col items-center justify-center w-screen h-screen bg-blue-950"
-    >
+    <div className="flex flex-col items-center justify-center w-screen h-screen bg-blue-950">
       {/* Cuadrado con la webcam */}
       <div
         className="relative flex items-center justify-center"

@@ -15,4 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+body {
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+}

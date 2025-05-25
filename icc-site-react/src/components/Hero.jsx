@@ -1,29 +1,32 @@
-import React from "react";
-import ImagenHero from "./ImagenHero";
-
-function Hero() {
+export const Hero = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center h-[70vh] w-full bg-gray-100 px-6 md:px-20">
-      {/* Imagen con bordes circulares */}
-      <div className="flex-shrink-0 mb-8 md:mb-0 md:mr-12">
-        <img
-          src="https://icc.utalca.cl/imagenes/slider/2.png"
-          alt="Imagen Utalca"
-          className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-lg"
-        />
+    <article className="w-full flex justify-center my-10">
+      <div className="max-w-[960px] w-full px-4">
+        <Hero2 />
       </div>
+    </article>
+  );
+};
 
-      {/* Texto a la derecha */}
-      <div className="text-center md:text-left">
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-          Bienvenido al Team ICC
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600">
-          Ingenieria Civil en Computación Universidad de Talca
-        </p>
+export const Hero2 = () => {
+  return (
+    <div className="relative bg-red-400 min-h-[480px] flex items-center justify-center overflow-hidden rounded-xl">
+      <img
+        src="/bryan.png"
+        alt="Fondo PixelPlay"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40 z-10"></div>
+
+      <div className="relative z-20 text-center text-white p-4 flex flex-col gap-4">
+        <h1 className="text-4xl font-black">Welcome to PixelPlay</h1>
+        <h2 className="text-sm font-normal">
+          Dive into the world of PixelPlay, where Computer Engineering...
+        </h2>
+        <button className="rounded-full bg-[#bfadea] text-[#131217] px-5 py-2 font-bold">
+          Play WordPass
+        </button>
       </div>
     </div>
   );
-}
-
-export default Hero;
+};

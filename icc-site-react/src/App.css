@@ -1,4 +1,4 @@
-#root {
+/* #root {
   height: 100%;
   width: 100%;
   display: flex;
@@ -11,7 +11,7 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-}
+} */
 
 .custom-background {
   background-color: #ff5722; /* Cambia el color aquí */
@@ -24,7 +24,7 @@ html, body {
 }
 
 .logo {
-  height: 6em;
+  height: 1.2rem;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;

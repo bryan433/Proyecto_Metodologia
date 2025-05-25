@@ -1,22 +1,31 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import LogoUtalca from "./LogoUtalca";
 import BotonGitHub from "./BotonGitHub";
 
-function NavBarPrincipal() {
+const links = [
+  { label: "Inicio", href: "/" },
+  { label: "Sobre Nosotros", href: "/about" },
+  { label: "Contacto", href: "#" },
+];
+
+export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white text-gray-900 px-4 py-1 shadow-md z-50">
+    <header className="w-fit sticky top-0 w-full z-50 px-4 py-2 shadow-md text-white justify-center items-center display flex bg-[#131217] border-b-2 border-indigo-500 ">
       {/* Contenedor principal */}
-      <div className="flex items-center justify-between">
-        {/* Logo a la izquierda */}
-        <div className="flex items-center">
+      <div className="flex items-center justify-between w-full">
+        {/* Logo */}
+        <div className="flex items-center gap-4">
           <LogoUtalca />
+          <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">
+            PixelPlay
+          </h2>
         </div>
 
-        {/* Botón para menú en pantallas pequeñas */}
+        {/* Botón hamburguesa (mobile) */}
         <button
-          className="block md:hidden text-gray-900 focus:outline-none"
+          className="md:hidden focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <svg
@@ -35,65 +44,43 @@ function NavBarPrincipal() {
           </svg>
         </button>
 
-        {/* Menú en pantallas grandes */}
-        <div className="hidden md:flex md:items-center md:space-x-6">
-          <a
-            href="/"
-            className="hover:text-blue-400 transition duration-300"
-          >
-            Inicio
-          </a>
-          <a
-            href="/about"
-            className="hover:text-blue-400 transition duration-300"
-          >
-            Sobre Nosotros
-          </a>
-          <a
-            href="#"
-            className="hover:text-blue-400 transition duration-300"
-          >
-            Contacto
-          </a>
-          <BotonGitHub/>
+        {/* Navegación (desktop) */}
+        <div className="hidden md:flex items-center gap-8 ml-auto">
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              className="text-sm font-medium leading-normal hover:text-blue-200 transition duration-300"
+            >
+              {link.label}
+            </a>
+          ))}
+          <BotonGitHub />
         </div>
       </div>
 
-      {/* Menú desplegable en pantallas pequeñas */}
-      <div
-        className={`${
-          menuOpen ? "block bg-gray-100" : "hidden"
-        } md:hidden mt-2 flex flex-col space-y-2`}
-      >
-        <a
-          href="#"
-          className="hover:text-blue-400 transition duration-300 text-center"
-        >
-          Inicio
-        </a>
-        <a
-          href="#"
-          className="hover:text-blue-400 transition duration-300 text-center"
-        >
-          Sobre Nosotros
-        </a>
-        <a
-          href="#"
-          className="hover:text-blue-400 transition duration-300 text-center"
-        >
-          Contacto
-        </a>
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-400 transition duration-300 text-center"
-        >
-          GitHub
-        </a>
-      </div>
-    </nav>
+      {/* Menú móvil */}
+      {menuOpen && (
+        <div className="md:hidden mt-2 flex flex-col space-y-2 bg-gray-100 text-black rounded-md p-4">
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              className="text-center hover:text-blue-500 transition duration-300"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center hover:text-blue-500 transition duration-300"
+          >
+            GitHub
+          </a>
+        </div>
+      )}
+    </header>
   );
-}
-
-export default NavBarPrincipal;
+};
