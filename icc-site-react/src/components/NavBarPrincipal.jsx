@@ -12,7 +12,7 @@ export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-fit sticky top-0 w-full z-50 px-4 py-2 shadow-md text-white justify-center items-center display flex bg-[#131217] border-b-2 border-indigo-500 ">
+    <header className="w-fit sticky top-0 w-full z-50 px-4 py-2 shadow-md text-white justify-center items-center display flex bg-[#131217] border-b-1 border-gray-100 ">
       {/* Contenedor principal */}
       <div className="flex items-center justify-between w-full">
         {/* Logo */}

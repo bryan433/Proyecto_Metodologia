@@ -10,7 +10,7 @@ export const Hero = () => {
 
 export const Hero2 = () => {
   return (
-    <div className="relative bg-red-400 min-h-[480px] flex items-center justify-center overflow-hidden rounded-xl">
+    <div className="relative bg-red-400 min-h-[480px] flex items-center justify-center overflow-hidden rounded-xl box-shadow-md shadow-gray-100 shadow-sm">
       <img
         src="/bryan.png"
         alt="Fondo PixelPlay"
@@ -23,9 +23,9 @@ export const Hero2 = () => {
         <h2 className="text-sm font-normal">
           Dive into the world of PixelPlay, where Computer Engineering...
         </h2>
-        <button className="rounded-full bg-[#bfadea] text-[#131217] px-5 py-2 font-bold">
-          Play WordPass
-        </button>
+        <a href="#games" className="capitalize hover:bg-gray-200 cursor-pointer transition rounded-full bg-[#bfadea] text-[#131217] px-5 py-2 font-bold cursor">
+          discover our games
+        </a>
       </div>
     </div>
   );

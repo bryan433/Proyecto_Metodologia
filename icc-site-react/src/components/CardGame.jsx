@@ -13,7 +13,7 @@ const games = [
   {
     id: 2,
     image:
-      "https://www.abc.es/Media/202305/02/20230502-1683032000_1000x563.jpg",
+      "/byran2.jpg",
     title: "Reconocimiento Facial",
     description:
       "es un juego de reconocimiento facial basado en la inteligencia artificial.",
@@ -22,7 +22,7 @@ const games = [
 
 export function CardGameContainer() {
   return (
-    <div className=" py-10 px-4">
+    <div id="" className=" py-10 px-4   ">
       <h2 className="text-3xl font-bold text-center text-gray-200 mb-8">
         Juegos Disponibles
       </h2>
@@ -33,7 +33,7 @@ export function CardGameContainer() {
 
 export const CardListGames = () => {
   return (
-    <div className="flex flex-col gap-6 px-4 py-10 w-full">
+    <div className="flex flex-col gap-6 px-4 py-10 grow-1">
       {games.map((game) => (
         <CardGameUnified game={game} key={game.id} />
       ))}
@@ -41,11 +41,41 @@ export const CardListGames = () => {
   );
 };
 
+export const CardGameUnified = ({ game }) => {
+  return (
+    <div className="bg-[#201d25] rounded-xl shadow-md shadow-gray-100/5  overflow-hidden transform hover:scale-105 transition duration-300  mx-auto flex w-full max-w-xl">
+      {/* Imagen del juego */}
+      <div
+        className="w-full aspect-video bg-center bg-contain bg-no-repeat rounded-md flex-1 "
+        style={{ backgroundImage: `url(${game.image})` }}
+      />
+
+
+      {/* Contenido */}
+      <div className="p-4 flex flex-col gap-3 flex-2">
+        <h3 className="text-white text-xl font-bold tracking-tight">
+          {game.title}
+        </h3>
+        <p className="text-[#a7a1b5] text-base leading-normal">
+          {game.description}
+        </p>
+        <Link
+          to="/dificultad"
+          className="self-start rounded-full bg-[#bfadea] text-[#131217] text-sm font-semibold px-5 py-2 hover:bg-[#d2c4f5] transition"
+        >
+          {game.buttonLabel || "Play Now"}
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+
 export const CardGame = ({ game }) => {
   return (
     <div
       key={game.id}
-      className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 max-w-xs mx-auto"
+      className="bg-white rounded-lg shadow-gray-100 shadow-lg w-full overflow-hidden transform hover:scale-105 transition duration-300 max-w-xs mx-auto"
     >
       <img
         src={game.image}
@@ -86,33 +116,5 @@ export const CardGameSt = ({ game }) => {
         </div>
       </div>
     </>
-  );
-};
-
-export const CardGameUnified = ({ game }) => {
-  return (
-    <div className="bg-[#201d25] rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 max-w-sm mx-auto flex w-[100%]">
-      {/* Imagen del juego */}
-      <div
-        className="w-full aspect-video bg-center bg-contain bg-no-repeat rounded-md"
-        style={{ backgroundImage: `url(${game.image})` }}
-      />
-
-      {/* Contenido */}
-      <div className="p-4 flex flex-col gap-3">
-        <h3 className="text-white text-xl font-bold tracking-tight">
-          {game.title}
-        </h3>
-        <p className="text-[#a7a1b5] text-base leading-normal">
-          {game.description}
-        </p>
-        <Link
-          to="/dificultad"
-          className="self-start rounded-full bg-[#bfadea] text-[#131217] text-sm font-semibold px-5 py-2 hover:bg-[#d2c4f5] transition"
-        >
-          {game.buttonLabel || "Play Now"}
-        </Link>
-      </div>
-    </div>
   );
 };

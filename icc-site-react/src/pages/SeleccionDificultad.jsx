@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import { BackgroundContainer } from "../App";
 const SeleccionDificultad = () => {
   const navigate = useNavigate();
 
@@ -8,7 +8,8 @@ const SeleccionDificultad = () => {
   };
 
   return (
-    <div className="bg-blue-900 w-screen text-white min-h-screen flex flex-col items-center justify-center px-4">
+    <div className=" w-screen text-white min-h-screen flex flex-col items-center justify-center px-4">
+      <BackgroundContainer />
       <img
         src="https://i0.wp.com/www.cristic.com/wp-content/uploads/2022/07/cristic-juegos-educativos-online-castellano-primaria-pasapalabra.png?fit=1920%2C1080&ssl=1"
         alt="Logo Pasapalabra"
@@ -17,7 +18,7 @@ const SeleccionDificultad = () => {
       <h1 className="text-4xl font-bold mb-6 text-center">
         ¡Bienvenido a Pasapalabra!
       </h1>
-      <p className="text-lg text-center max-w-md mb-10">
+      <p className="text-lg text-center max-w-md mb-10 text-pretty">
         Pasapalabra es un emocionante juego de preguntas y respuestas donde
         deberás completar el rosco respondiendo correctamente a cada letra del
         abecedario. ¡Pon a prueba tus conocimientos y diviértete!

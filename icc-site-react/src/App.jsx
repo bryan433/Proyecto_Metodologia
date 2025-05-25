@@ -7,7 +7,8 @@ import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="flex flex-col items-center min-h-screen flex-1 w-full bg-[#131217]">
+    <div className="flex  flex-col items-center min-h-screen flex-1 w-full ">
+      <BackgroundContainer />
       <Header />
       <section className="p-4 w-full justify-center flex flex-col ">
         <Hero />
@@ -19,9 +20,15 @@ function App() {
   );
 }
 
+export const BackgroundContainer = () => {
+  return (
+    <div className=" inset-0 fixed -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+  );
+};
+
 export const SomeThing = () => {
   return (
-    <div className="@container  ">
+    <div id="games" className="@container  ">
       <div className="flex flex-col justify-end gap-6 px-4 py-10 max-w-[960px] mx-auto border-2 border-[#201d25] bg-[#201d25] rounded-xl shadow-[0_0_4px_rgba(0,0,0,0.1)]">
         <div className="flex flex-col items-center justify-center gap-2 text-center">
           <h1 className="text-white text-center tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
