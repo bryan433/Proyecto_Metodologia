@@ -18,12 +18,4 @@
   background-color: var(--color-bg-secondary);
 }
 
-.section-facial {
-  > *:last-child {
-    flex: 1;
-  }
-}
 
-section {
-
-}

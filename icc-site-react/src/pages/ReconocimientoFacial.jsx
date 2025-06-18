@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import FormularioUsuario from "../components/FormularioUsuario";
-
 import "./reconocimientoFacial.css";
 import { Header } from "../components/NavBarPrincipal";
 const dataUrl = "/1.png";
@@ -32,6 +31,7 @@ const ReconocimientoFacial = () => {
   }, []);
 
   const takePhoto = () => {
+    "";
     // if (videoRef.current && canvasRef.current) {
     //   const canvas = canvasRef.current;
     //   const context = canvas.getContext("2d");
@@ -85,6 +85,7 @@ const ReconocimientoFacial = () => {
 
   return (
     <div className="h-screen max-h-screen bg-gray-200/50">
+      <BackgroundContainer />
       <Header />
 
       <section className="section-facial flex  relative px-4 py-2 gap-4 h-full w-full">
@@ -143,21 +144,21 @@ const ReconocimientoFacial = () => {
               <h2>Imágenes capturadas</h2>
             </header>
             {/* Contenedor de imágenes con scroll */}
-            <ul className="img-container--list overflow-y-auto bg-white rounded-lg shadow-lg p-4 grid grid-cols-2 gap-4">
+            <ul className="img-container--list ">
               {" "}
               {/* Ajustado para una mejor visualización de la grilla */}
               {currentImages.length > 0 ? (
                 currentImages.map((img, index) => (
-                  <li key={index} className="mb-4">
+                  <li key={index}>
                     <img
                       src={img}
                       alt={`Foto ${indexOfFirstImage + index + 1}`}
-                      className="w-full h-48 object-cover rounded-lg shadow-md" // Ajusta el tamaño de la imagen dentro de la grilla
+                      className="w-full h-48 w-48 object-cover rounded-lg shadow-md" // Ajusta el tamaño de la imagen dentro de la grilla
                     />
                   </li>
                 ))
               ) : (
-                <li className="col-span-2 text-center py-8">
+                <li className=" text-center py-8">
                   {" "}
                   {/* Ocupa ambas columnas */}
                   <p className="text-gray-500">
@@ -210,6 +211,12 @@ const ReconocimientoFacial = () => {
         onClose={cerrarFormulario}
       />
     </div>
+  );
+};
+
+export const BackgroundContainer = () => {
+  return (
+    <div className=" inset-0 fixed -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
   );
 };
 
