@@ -1,11 +1,18 @@
-import React, { useRef, useState, useEffect } from "react";
-import FormularioUsuario from '../components/FormularioUsuario';
+import { useRef, useState, useEffect } from "react";
+import FormularioUsuario from "../components/FormularioUsuario";
+
+import "./reconocimientoFacial.css";
+import { Header } from "../components/NavBarPrincipal";
+const dataUrl = "/1.png";
 
 const ReconocimientoFacial = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [image, setImage] = useState(null);
-  const [mostrarFormulario, setMostrarFormulario] = useState(false); // NUEVO
+
+  const [image, setImage] = useState([]);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const imagesPerPage = 6;
 
   useEffect(() => {
     const startWebcam = async () => {
@@ -25,14 +32,16 @@ const ReconocimientoFacial = () => {
   }, []);
 
   const takePhoto = () => {
-    if (videoRef.current && canvasRef.current) {
-      const canvas = canvasRef.current;
-      const context = canvas.getContext("2d");
-      context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-      const dataUrl = canvas.toDataURL("image/png");
-      setImage(dataUrl);
-      setMostrarFormulario(true); // MOSTRAR FORMULARIO AL TOMAR FOTO
-    }
+    // if (videoRef.current && canvasRef.current) {
+    //   const canvas = canvasRef.current;
+    //   const context = canvas.getContext("2d");
+    //   context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+    //   const dataUrl = canvas.toDataURL("image/png");
+    //   setImage(dataUrl);
+    //   setMostrarFormulario(true); // MOSTRAR FORMULARIO AL TOMAR FOTO
+    // }
+
+    setImage((prevImages) => [...prevImages, dataUrl]);
   };
 
   const handleUpload = (event) => {
@@ -41,7 +50,7 @@ const ReconocimientoFacial = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         setImage(e.target.result);
-        setMostrarFormulario(true); // TAMBIÉN MUESTRA FORMULARIO AL SUBIR IMAGEN
+        setMostrarFormulario(true);
       };
       reader.readAsDataURL(file);
     }
@@ -51,67 +60,155 @@ const ReconocimientoFacial = () => {
     setMostrarFormulario(false);
   };
 
+  // --- Lógica de Paginación ---
+  const indexOfLastImage = currentPage * imagesPerPage;
+  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+  const currentImages = image.slice(indexOfFirstImage, indexOfLastImage);
+
+  const totalPages = Math.ceil(image.length / imagesPerPage);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-950 relative">
-      <h1 className="text-3xl font-bold text-white mt-4 mb-4">Reconocimiento Facial</h1>
-      <div
-        className="relative flex items-center justify-center"
-        style={{
-          width: "400px",
-          height: "400px",
-          backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          overflow: "hidden",
-        }}
-      >
-        <video
-          ref={videoRef}
-          autoPlay
-          playsInline
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        ></video>
-        <canvas
-          ref={canvasRef}
-          style={{ display: "none" }}
-          width="400"
-          height="400"
-        ></canvas>
-      </div>
+    <div className="h-screen max-h-screen bg-gray-200/50">
+      <Header />
 
-      <div className="mt-6 flex gap-6 items-center space-y-4">
-        <button
-          onClick={takePhoto}
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold"
-        >
-          Tomar Foto
-        </button>
-        <label
-          htmlFor="upload"
-          className="px-6 py-3 bg-green-500 text-white rounded-lg text-lg font-semibold cursor-pointer"
-        >
-          Subir Imagen
-        </label>
-        <input
-          id="upload"
-          type="file"
-          accept="image/*"
-          onChange={handleUpload}
-          style={{ display: "none" }}
-        />
-      </div>
+      <section className="section-facial flex  relative px-4 py-2 gap-4 h-full w-full">
+        <article className="flex flex-col ">
+          <header>
+            <h1 className="text-3xl font-bold text-black mt-4 mb-4">
+              Reconocimiento Facial
+            </h1>
+          </header>
 
-      {image && (
-        <div className="mt-6">
-          <img
-            src={image}
-            alt="Captura"
-            className="rounded-lg w-[300px] h-[200px] object-contain"
-          />
-        </div>
-      )}
+          {/* container video */}
+          <div className="relative flex items-center justify-center w-[400px] h-[400px] bg-gray-300 rounded-lg shadow-lg overflow-hidden ">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              className="w-full h-full object-cover"
+            ></video>
+            <canvas
+              ref={canvasRef}
+              style={{ display: "none" }}
+              width="400"
+              height="400"
+            ></canvas>
+          </div>
+
+          <div
+            className="mt-6 flex gap-6 items-center space-y-4"
+            aria-label="buttons de acción"
+          >
+            <button
+              onClick={takePhoto}
+              className="px-6 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors duration-300"
+            >
+              Tomar Foto
+            </button>
+            <label
+              htmlFor="upload"
+              className="px-6 py-3 bg-green-500 text-white rounded-lg text-lg font-semibold cursor-pointer hover:bg-green-600 transition-colors duration-300"
+            >
+              Subir Imagen
+            </label>
+            <input
+              id="upload"
+              type="file"
+              accept="image/*"
+              onChange={handleUpload}
+              style={{ display: "none" }}
+            />
+          </div>
+        </article>
+
+        <article className=" flex flex-col">
+          <div className="w-full flex flex-col h-full">
+            <header className="text-3xl font-bold text-black mt-4 mb-4">
+              <h2>Imágenes capturadas</h2>
+            </header>
+            {/* Contenedor de imágenes con scroll */}
+            <ul className="img-container--list overflow-y-auto bg-white rounded-lg shadow-lg p-4 grid grid-cols-2 gap-4">
+              {" "}
+              {/* Ajustado para una mejor visualización de la grilla */}
+              {currentImages.length > 0 ? (
+                currentImages.map((img, index) => (
+                  <li key={index} className="mb-4">
+                    <img
+                      src={img}
+                      alt={`Foto ${indexOfFirstImage + index + 1}`}
+                      className="w-full h-48 object-cover rounded-lg shadow-md" // Ajusta el tamaño de la imagen dentro de la grilla
+                    />
+                  </li>
+                ))
+              ) : (
+                <li className="col-span-2 text-center py-8">
+                  {" "}
+                  {/* Ocupa ambas columnas */}
+                  <p className="text-gray-500">
+                    No hay imágenes capturadas. Por favor, toma una foto o sube
+                    una imagen.
+                  </p>
+                </li>
+              )}
+            </ul>
+
+            {/* --- Controles de Paginación --- */}
+            {totalPages > 1 && ( // Solo muestra la paginación si hay más de una página
+              <nav className="flex justify-center items-center mt-4 space-x-2">
+                <button
+                  onClick={goToPrevPage}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 transition-colors duration-300"
+                >
+                  {"<"} Anterior
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => (
+                  <button
+                    key={i + 1}
+                    onClick={() => paginate(i + 1)}
+                    className={`px-4 py-2 rounded-lg ${
+                      currentPage === i + 1
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    } transition-colors duration-300`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  onClick={goToNextPage}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 transition-colors duration-300"
+                >
+                  Siguiente {">"}
+                </button>
+              </nav>
+            )}
+          </div>
+        </article>
+      </section>
 
       {/* FORMULARIO */}
-      <FormularioUsuario visible={mostrarFormulario} onClose={cerrarFormulario} />
+      <FormularioUsuario
+        visible={mostrarFormulario}
+        onClose={cerrarFormulario}
+      />
     </div>
   );
 };

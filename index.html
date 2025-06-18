@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f5f5f0] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#181811]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+            </div>
+            <h2 class="text-[#181811] text-lg font-bold leading-tight tracking-[-0.015em]">FaceID</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#181811] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#181811] text-sm font-medium leading-normal" href="#">Settings</a>
+            </div>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f5f5f0] text-[#181811] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+            >
+              <div class="text-[#181811]" data-icon="Question" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyG5D_P8l_uITqTBNlvy0p1-FUCcZA8r4kNDG6g38cPwliNKGp3YWn4nex4GtDlUIaGni9wx3xhckPbhu4_qOhQ0TQVwig9W_VMknUJphNrHPPvUbXau9rCwEhRYQ2TEhadN22-6wedxFDXXc0Y377gp3qPQfZRI3juqiVYL1NslG065Q7P-wejx9gAmsHtSuFEOBpWEzIczwy54cGut_taH-9_hGVy-U8UbTcbEloYv2kY4qg_bZ7sT4Xh6jc5gQ9iY6ociX4zjJc");'
+            ></div>
+          </div>
+        </header>
+        <div class="gap-1 px-6 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col w-80">
+            <h2 class="text-[#181811] tracking-light text-[28px] font-bold leading-tight px-4 text-left pb-3 pt-5">Facial Recognition</h2>
+            <p class="text-[#181811] text-base font-normal leading-normal pb-3 pt-1 px-4">
+              Capture or upload an image for facial recognition. Your photos will be stored securely in the grid on the right.
+            </p>
+            <div class="flex px-4 py-3 justify-start">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f8f406] text-[#181811] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Take Photo</span>
+              </button>
+            </div>
+            <div class="flex px-4 py-3 justify-start">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f5f5f0] text-[#181811] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Upload Image</span>
+              </button>
+            </div>
+          </div>
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <h2 class="text-[#181811] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Stored Photos</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDhDNZ_xrIt-k__jNcOyu0tdkfaJJrWK_IFNAW_ENtocpLSDdB4bt5lwvscLpj6ESnpmMUpglc_uImfGUwtECq5Gh4pSxfvFj1sgHt_AqUPbsmScfgJIjyvUVJvgW0iO0PtLRBq8qW8s7v7HaU-ZOJIb83q5sAcFRiWeyJk1eu7g3v7wCMF82m2lHBJokfGBykfzaMscItbsImGDzUoCCzXgStwn1bpwbwlgyXjmYju7L40i6R5b76ElRRfDwWWm-dGOCL_5v_mnbF");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCy6YpXzlJuqwkVIfrCsE0y2VNUAU-20fWFJY0V7_rxZYKwLlyJP5l8s1Q2P_m0XumLEBI2vlBf_gIAXnpO76jXlcuV0gVdCJHQVxDfRmP-Q7M4MB2baY0AgoL5jcVig8QtUqw4QigD_hHrXhLkGU1D59bTNPEi6T64EYk7gmMQbrhANuN6S4ERUFzV0CJ_BmLK3uEU_Bg8ykV-4rf3FP79syKb1HxnLML_SdP6cZJUTIgoPT9DPEaYAskmDvjo07nE9RKxQN6BJGz1");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgjJnlXelagvd-roGgLxxPXIa30zFnoayC0zgbaEA2j6lS0PfhQ7PwlE36YodZihyV3Y7VWEgIf5BpoofdwWZxlxMzbgDNm0ACVBxvjTu2z2q8u_m_yi0AWP_1HZnC8RTA1RmY7Ds0KDKAfkxFz8t9dSz6fRzeq-zV-gckR-rOMNZYVpl01PSMIbkY7wvyWpH_EF-v2qYNrjlRFIbI24E58DUdEvnms9CL6hdXZP7VJD62oM4yNSiApXjfyJJw6QM0nWiOwwnFlV67");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQuwvaNmioSnwzJakRvp-uYws7tfH6UB5_JFoUCGVigKLNsbozgrLDNl6JA3nvWVqYN1xWtLc3mIVlF3HFiIQ9abFUJctKBq4k8x6ZsCvzpCEG_DviB7XJuaf7q0orBAg7afS9amQDuiw7gWgYcqKHScU_i32OTHeIiNLzx903eZBx0dApqwsXb5LO3DxNbnJ3DX1kGzEgRvcCOOaEmI1MKW1mqTVe79dXHeu4dIbZRIrWChrZ8RP_X4hU3ObENKHiFicrPkKomXc_");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDdODrJgv6o2NoFtwKG6ayhxMDM7rhKQWyRdlJpi8G93mbtrLFZGcQlln4dvedfTp5u6FvP4vqFjOcUbyPMqJeyD3_nrOcPqYnwEZYJB5DYPeHsF9X49xDkuAWMyzmYumZKV2mS-AHfjvKCLij7b4FdGfpnte4E_azODVmJ8-DcBCmXoaKpV_QY2w3a2UzUUBisaZAv8iYADKb8ur3i03EdEYqIuCKJMM-gnlHBjK4-FTFLvEG798tlYkukbn8unjImb7mcXfnwQ0B");'
+                ></div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBHrdtYMA4KLBxdKHxZ13HrDXG6Szm4LgM6U5b2VQhqfwXkLEDPys5d-bKICYjGKKK2ATLYoAqQwivwroMg0LWnx0CWfqEonmtrb-MOxs6plzxeokn7NiBfRtPwfyiAm0VDoLuDWoFl4kN6dMyTbmtB8dh0QgP2skFxAkefYBu9gASk8eZBrt4rTnUE6OnFxuysDIt0pwkJ06Vh77F9cDvyZYnT34XjGd3KNWf0jd0lUyVRBhAFYP8tE-9aA-WtfEIwsdLIsXhV4H5r");'
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
