@@ -1,11 +1,75 @@
 .img-container--list {
-  display: grid;
-  inline-size: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  block-size: 100%;
   gap: 16px;
   padding-inline: 2rem;
   padding-block: 1rem;
-  /*block-size: 100%;*/
+
+  > * {
+    aspect-ratio: 1 / 1;
+    block-size: 100%;
+    inline-size: 100%;
+
+    max-block-size: 200px;
+    max-inline-size: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-wrapper {
+    position: relative;
+    z-index: 2;
+    border-radius: 8px;
+    outline: 5px dashed transparent;
+
+    img {
+      z-index: 2;
+    }
+
+    &::after {
+      content: "😡";
+
+    }
+
+    &::before {
+      content: "🍏";
+      margin-inline-start: auto;
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      transition: opacity 0.3s ease;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+    }
+
+    &:hover {
+      outline-color: red;
+
+      &::after {
+        opacity: 1;
+      }
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .img-container {
@@ -19,7 +83,25 @@
 }
 
 .section-facial {
-  > *:last-child {
-    flex: 1;
+  --color-bg-secondary: rebeccapurple;
+  --color-text-secondary: transparent;
+
+  > div {
+    inline-size: 100%;
+    block-size: 100%;
+    max-block-size: 70vh;
+    > *:first-child {
+      flex: 1;
+    }
+
+    > *:last-child {
+      flex: 2;
+
+      scrollbar-color: var(--color-bg-secondary) var(--color-text-secondary);
+    }
+  }
+
+  article {
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
   }
 }
